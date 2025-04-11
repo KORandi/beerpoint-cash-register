@@ -26,7 +26,7 @@ interface MenuItemProps {
   item: MenuItemData;
 }
 
-export default function MenuItem({ item }: MenuItemProps): JSX.Element {
+export default function MenuItem({ item }: MenuItemProps) {
   const handleDelete = async (): Promise<void> => {
     if (window.confirm("Opravdu chcete odstranit tuto položku?")) {
       try {

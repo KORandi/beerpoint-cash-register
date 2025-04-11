@@ -27,7 +27,7 @@ interface OrderListProps {
   orders: Order[];
 }
 
-export default function OrderList({ orders }: OrderListProps): JSX.Element {
+export default function OrderList({ orders }: OrderListProps) {
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full bg-white">

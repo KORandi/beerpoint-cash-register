@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
-import Layout from "../../components/Layout";
-import OrderForm from "../../components/OrderForm";
+import { useRouter, useSearchParams } from "next/navigation";
+import Layout from "../components/Layout";
+import OrderForm from "../components/OrderForm";
 import { format } from "date-fns";
 import { cs } from "date-fns/locale";
 
@@ -32,9 +32,9 @@ interface OrderDatabase {
   [key: string]: Order;
 }
 
-export default function OrderDetail(): JSX.Element {
+export default function OrderDetail() {
   const router = useRouter();
-  const { id } = router.query;
+  const id = useSearchParams().get("id");
   const [order, setOrder] = useState<Order | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isEditMode, setIsEditMode] = useState<boolean>(false);

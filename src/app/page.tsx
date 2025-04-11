@@ -1,5 +1,6 @@
+"use client";
 import { useState, useEffect } from "react";
-import Layout from "../components/Layout";
+import Layout from "./components/Layout";
 import Link from "next/link";
 import { format } from "date-fns";
 import { cs } from "date-fns/locale";
@@ -10,7 +11,6 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
 } from "recharts";
 
@@ -52,7 +52,7 @@ interface DashboardData {
   popularItems: PopularItem[];
 }
 
-export default function HomePage(): JSX.Element {
+export default function HomePage() {
   const [dashboardData, setDashboardData] = useState<DashboardData | null>(
     null
   );

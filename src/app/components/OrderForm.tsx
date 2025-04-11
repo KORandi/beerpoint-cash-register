@@ -1,5 +1,5 @@
 import React, { useState, useEffect, FormEvent, ChangeEvent } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import OrderItem from "./OrderItem";
 
 // Define interfaces for the component's data structures
@@ -32,9 +32,7 @@ interface OrderFormProps {
   initialData?: OrderData | null;
 }
 
-export default function OrderForm({
-  initialData = null,
-}: OrderFormProps): JSX.Element {
+export default function OrderForm({ initialData = null }: OrderFormProps) {
   const router = useRouter();
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);

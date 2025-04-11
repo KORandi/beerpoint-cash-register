@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
-import Layout from "../../components/Layout";
+import { useSearchParams } from "next/navigation";
+import Layout from "../components/Layout";
 import { format, parse } from "date-fns";
 import { cs } from "date-fns/locale";
-import DailyReport from "../../components/DailyReport";
+import DailyReport from "../components/DailyReport";
 
 // Define interfaces for the data structure
 interface CategorySales {
@@ -49,9 +49,8 @@ interface DailyReportData {
   cash: CashBalance;
 }
 
-export default function DailyAccountingPage(): JSX.Element {
-  const router = useRouter();
-  const { date } = router.query;
+export default function DailyAccountingPage() {
+  const date = useSearchParams().get("date");
   const [reportData, setReportData] = useState<DailyReportData | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isClosed, setIsClosed] = useState<boolean>(false);
@@ -160,7 +159,6 @@ export default function DailyAccountingPage(): JSX.Element {
 
       // Simulace úspěšného uzavření
       console.log("Denní uzávěrka uzavřena:", {
-        date,
         ...reportData,
       });
 

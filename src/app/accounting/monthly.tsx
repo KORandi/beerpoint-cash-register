@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import Layout from "../../components/Layout";
+import Layout from "../components/Layout";
 import { format } from "date-fns";
 import { cs } from "date-fns/locale";
-import MonthlyReport from "../../components/MonthlyReport";
+import MonthlyReport from "../components/MonthlyReport";
 
 // Define interfaces for the data structure
 interface DailyData {
@@ -35,7 +35,7 @@ interface MonthlyReportData {
   summary: ReportSummary;
 }
 
-export default function MonthlyAccountingPage(): JSX.Element {
+export default function MonthlyAccountingPage() {
   const [reportData, setReportData] = useState<MonthlyReportData | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [selectedMonth, setSelectedMonth] = useState<string>(

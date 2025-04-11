@@ -1,7 +1,5 @@
-import { compare, hash } from "bcryptjs";
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { JWT } from "next-auth/jwt";
 import dbConnect from "./database";
 
 // Extend the built-in session types

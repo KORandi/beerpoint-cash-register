@@ -1,23 +1,29 @@
 import "../styles/globals.css";
-import { SessionProvider } from "next-auth/react";
-import type { AppProps } from "next/app";
-import type { Session } from "next-auth";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@beerpoint/lib/auth";
+import AuthProvider from "@beerpoint/app/components/AuthProvider";
 
-interface MyAppProps extends AppProps {
-  pageProps: {
-    session?: Session;
-    [key: string]: unknown;
-  };
-}
+// Add metadata configuration
+export const metadata = {
+  title: "Hospodský systém",
+  description: "Hospodský pokladní a účetní systém",
+};
 
-function MyApp({ Component, pageProps }: MyAppProps) {
-  const { session, ...restPageProps } = pageProps;
+export default async function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const session = await getServerSession(authOptions);
 
   return (
-    <SessionProvider session={session}>
-      <Component {...restPageProps} />
-    </SessionProvider>
+    <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+      </head>
+      <body>
+        <AuthProvider session={session}>{children}</AuthProvider>
+      </body>
+    </html>
   );
 }
-
-export default MyApp;

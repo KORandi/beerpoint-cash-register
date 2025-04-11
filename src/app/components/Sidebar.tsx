@@ -1,6 +1,7 @@
+"use client";
 import React from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import {
   FaHome,
   FaUtensils,
@@ -9,7 +10,7 @@ import {
 } from "react-icons/fa";
 
 export default function Sidebar() {
-  const router = useRouter();
+  const pathname = usePathname();
 
   const menuItems = [
     { title: "Přehled", icon: <FaHome />, path: "/" },
@@ -25,17 +26,14 @@ export default function Sidebar() {
         <ul>
           {menuItems.map((item) => (
             <li key={item.path} className="mb-2">
-              <Link href={item.path}>
-                <a
-                  className={`flex items-center p-3 rounded ${
-                    router.pathname === item.path
-                      ? "bg-gray-900"
-                      : "hover:bg-gray-700"
-                  }`}
-                >
-                  <span className="mr-3">{item.icon}</span>
-                  {item.title}
-                </a>
+              <Link
+                href={item.path}
+                className={`flex items-center p-3 rounded ${
+                  pathname === item.path ? "bg-gray-900" : "hover:bg-gray-700"
+                }`}
+              >
+                <span className="mr-3">{item.icon}</span>
+                {item.title}
               </Link>
             </li>
           ))}

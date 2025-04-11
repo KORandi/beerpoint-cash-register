@@ -13,10 +13,7 @@ interface OrderItemProps {
   onRemove?: (id: string) => void;
 }
 
-export default function OrderItem({
-  item,
-  onRemove,
-}: OrderItemProps): JSX.Element {
+export default function OrderItem({ item, onRemove }: OrderItemProps) {
   return (
     <tr className="border-b">
       <td className="py-2 px-3">{item.name}</td>

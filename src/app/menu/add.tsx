@@ -1,5 +1,5 @@
-import Layout from "../../components/Layout";
-import MenuForm from "../../components/MenuForm";
+import Layout from "../components/Layout";
+import MenuForm from "../components/MenuForm";
 
 export default function AddMenuItem() {
   return (

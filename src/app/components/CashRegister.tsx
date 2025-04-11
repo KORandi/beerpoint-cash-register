@@ -16,7 +16,7 @@ interface CashRegisterProps {
 export default function CashRegister({
   initialBalance,
   onBalanceChange,
-}: CashRegisterProps): JSX.Element {
+}: CashRegisterProps) {
   const [balance, setBalance] = useState<number>(initialBalance || 0);
   const [amount, setAmount] = useState<string>("");
   const [transactions, setTransactions] = useState<Transaction[]>([]);
@@ -59,7 +59,10 @@ export default function CashRegister({
     const newBalance = balance - parsedAmount;
 
     setBalance(newBalance);
-    onBalanceChange && onBalanceChange(newBalance);
+
+    if (onBalanceChange) {
+      onBalanceChange(newBalance);
+    }
 
     setTransactions([
       ...transactions,

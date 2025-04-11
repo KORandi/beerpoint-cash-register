@@ -1,8 +1,9 @@
+"use client";
 import { useState, useEffect } from "react";
-import Layout from "../../components/Layout";
+import Layout from "../components/Layout";
 import Link from "next/link";
 import { FaPlus } from "react-icons/fa";
-import OrderList from "../../components/OrderList";
+import OrderList from "../components/OrderList";
 
 // Define interfaces for the data structure
 interface OrderItem {

@@ -1,5 +1,5 @@
-import Layout from "../../components/Layout";
-import OrderForm from "../../components/OrderForm";
+import Layout from "../components/Layout";
+import OrderForm from "../components/OrderForm";
 
 export default function AddOrder() {
   return (

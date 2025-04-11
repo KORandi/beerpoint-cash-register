@@ -76,7 +76,7 @@ export default function DailyReport({
   data,
   onClosingBalanceChange,
   isClosed,
-}: DailyReportProps): JSX.Element {
+}: DailyReportProps) {
   const [closingBalance, setClosingBalance] = useState<string>("");
 
   const handleClosingBalanceChange = (

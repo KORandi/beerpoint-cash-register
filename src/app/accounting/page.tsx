@@ -1,13 +1,13 @@
+"use client";
 import { useState, ChangeEvent } from "react";
-import Layout from "../../components/Layout";
+import Layout from "../components/Layout";
 import Link from "next/link";
 import { format } from "date-fns";
-import { cs } from "date-fns/locale";
 
 // Define types for export data options
 type ExportDataType = "day" | "month" | "year";
 
-export default function AccountingPage(): JSX.Element {
+export default function AccountingPage() {
   const [selectedDate, setSelectedDate] = useState<string>(
     format(new Date(), "yyyy-MM-dd")
   );

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 // Define the category type to match the values used in MenuItemSchema
 type MenuItemCategory =
@@ -24,9 +24,7 @@ interface MenuFormProps {
   initialData?: MenuItem | null;
 }
 
-export default function MenuForm({
-  initialData = null,
-}: MenuFormProps): JSX.Element {
+export default function MenuForm({ initialData = null }: MenuFormProps) {
   const router = useRouter();
   const [formData, setFormData] = useState<MenuItem>({
     name: "",

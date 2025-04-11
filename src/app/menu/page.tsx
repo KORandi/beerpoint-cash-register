@@ -1,6 +1,7 @@
+"use client";
 import { useState, useEffect } from "react";
-import Layout from "../../components/Layout";
-import MenuItem from "../../components/MenuItem";
+import Layout from "../components/Layout";
+import MenuItem from "../components/MenuItem";
 import Link from "next/link";
 import { FaPlus } from "react-icons/fa";
 
@@ -23,7 +24,7 @@ interface MenuItemData {
   isActive?: boolean;
 }
 
-export default function MenuPage(): JSX.Element {
+export default function MenuPage() {
   const [menuItems, setMenuItems] = useState<MenuItemData[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 

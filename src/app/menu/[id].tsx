@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
-import Layout from "../../components/Layout";
-import MenuForm from "../../components/MenuForm";
+import { useRouter, useSearchParams } from "next/navigation";
+import Layout from "../components/Layout";
+import MenuForm from "../components/MenuForm";
 
 // Define the category type to match the values used in MenuItemSchema
 type MenuItemCategory =
@@ -27,9 +27,9 @@ interface MenuItemDatabase {
   [key: string]: MenuItem;
 }
 
-export default function EditMenuItem(): JSX.Element {
+export default function EditMenuItem() {
   const router = useRouter();
-  const { id } = router.query;
+  const id = useSearchParams().get("id");
   const [menuItem, setMenuItem] = useState<MenuItem | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
