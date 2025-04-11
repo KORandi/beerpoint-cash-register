@@ -1,7 +1,8 @@
+"use client";
 import { useState, useEffect } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
-import Layout from "../components/Layout";
-import MenuForm from "../components/MenuForm";
+import { useRouter, useParams } from "next/navigation";
+import Layout from "../../components/Layout";
+import MenuForm from "../../components/MenuForm";
 
 // Define the category type to match the values used in MenuItemSchema
 type MenuItemCategory =
@@ -29,12 +30,20 @@ interface MenuItemDatabase {
 
 export default function EditMenuItem() {
   const router = useRouter();
-  const id = useSearchParams().get("id");
+  const params = useParams();
+  const id = params?.id as string;
+
+  console.log("ID from params:", id);
+
   const [menuItem, setMenuItem] = useState<MenuItem | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    if (!id) return;
+    if (!id) {
+      console.error("No ID provided");
+      setIsLoading(false);
+      return;
+    }
 
     const fetchMenuItem = async (): Promise<void> => {
       try {
@@ -76,7 +85,13 @@ export default function EditMenuItem() {
           },
         };
 
-        setMenuItem(items[id as string] || null);
+        console.log("Fetching menu item with ID:", id);
+        setMenuItem(items[id] || null);
+
+        if (!items[id]) {
+          console.error(`Menu item with ID ${id} not found`);
+        }
+
         setIsLoading(false);
       } catch (error) {
         console.error("Chyba při načítání položky:", error);
@@ -99,7 +114,7 @@ export default function EditMenuItem() {
     return (
       <Layout title="Položka nenalezena | Hospodský systém">
         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
-          <p>Položka nebyla nalezena!</p>
+          <p>Položka nebyla nalezena! ID: {id || "nezadáno"}</p>
         </div>
         <button
           onClick={() => router.push("/menu")}
